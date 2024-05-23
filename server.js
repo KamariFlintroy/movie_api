@@ -28,7 +28,7 @@ http
         throw err;
       }
       response.writeHead(200, { "Content-Type": "text/plain" });
-      response.write(data);
+      response.write(date);
       response.end("Hello Node!\n");
     });
   })
