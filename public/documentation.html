@@ -1,14 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MCU</title>
   </head>
   <body>
-    <p>
-      This is a server-side component of a “movies” web application. The web
-      application will provide users with access to information about different
-      movies, directors, and genres. Users will be able to sign up, update their
-      personal information, and create a list of their favorite movies.
-    </p>
+    <header>
+      <h1>API Documentation</h1>
+    </header>
+    <main>
+      <section>
+        <h2>Endpoints</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Request</th>
+              <th>URL</th>
+              <th>Response</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>GET</td>
+              <td>/topMovies</td>
+              <td>Returns a list of all movies.</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/topMovies/:title</td>
+              <td>
+                Returns data (description, genre, director, image URL, whether
+                it’s featured or not) about a single movie by title.
+              </td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/genre/:name</td>
+              <td>Returns data (description) about a genre by name/title.</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/director/:name</td>
+              <td>
+                Returns data (bio, birth year, death year) about a director by
+                name.
+              </td>
+            </tr>
+            <tr>
+              <td>POST</td>
+              <td>/users</td>
+              <td>Allows a new user to register.</td>
+            </tr>
+            <tr>
+              <td>PUT</td>
+              <td>/users/:id</td>
+              <td>Allows users to update their user info (username).</td>
+            </tr>
+            <tr>
+              <td>POST</td>
+              <td>/users/:id/favorites/:movieTitle</td>
+              <td>Allows users to add a movie to their list of favorites.</td>
+            </tr>
+            <tr>
+              <td>DELETE</td>
+              <td>/users/:id/favorites/:movieTitle</td>
+              <td>
+                Allows users to remove a movie from their list of favorites.
+              </td>
+            </tr>
+            <tr>
+              <td>DELETE</td>
+              <td>/users/:id</td>
+              <td>Allows existing users to deregister.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+    <footer></footer>
   </body>
 </html>
