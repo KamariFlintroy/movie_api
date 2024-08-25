@@ -349,24 +349,24 @@ app.get('/users/:Username', async (req, res) => {
 });
 
 // UPDATE
-app.put('users/:Username', async (req, res) => {
-  await Users.findOneAndUpdate({ Username: req.params.Username }, { $set:
-  {
+app.put('/users/:Username', (req, res) => {
+   Users.findOneAndUpdate(
+    { Username: req.params.Username }, 
+    { 
+      $set: {
     Username: req.body.Username,
     Password: req.body.Password,
     Email: req.body.Email,
-    Birth_date: req.body.Birth_date
-  }
-},
-{ new: true }) // This line makes sure that the updated document is returned
-.then((updatedUser) => {
-  res.json(updatedUser);
-})
-.catch((err) => {
-  console.error(err);
-  res.status(500).send('Error: ' + err);
-})
-
+    Birth_date: req.body.Birth_date,
+  },
+  },
+  { new: true }
+   )
+   .then((updatedUser) => res.status(200). json (updatedUser))
+   .catch((error) => {
+    console.error(error);
+    res.status(500).send('Error: ' + error);
+  });
 });
 
 // CREATE // Add a movie to a user's list of favorites
@@ -402,7 +402,7 @@ app.delete('/users/:id/:movieTitle', (req, res) => {
 // DELETE // Delete a user by username
 app.delete('/users/:Username', async (req, res) => 
 {
-  await Users.findOneAndRemove({ Username: req.params.Username })
+  await Users.findOneAndDelete({ Username: req.params.Username })
   .then((user) => {
     if (!user) {
       res.status(400).send(req,params.Username + 'was not found');
@@ -450,6 +450,10 @@ app.get('/director/:Name', (req, res) => {
       res.status(500).send('Error: ' + err);
     });
   });
+
+app.get('/', (req, res) => {
+  res.send('Welcome to my movie app!');
+});
 
 // listen for requests
 app.listen(8080, () => {
