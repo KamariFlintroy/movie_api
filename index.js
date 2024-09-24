@@ -323,7 +323,6 @@ app.get('/', (req, res) => {
 // READ
 app.get(
   '/movies',
-  passport.authenticate('jwt', { session: false }),
   (req, res) => {
     Movies.find()
       .then((movies) => {
